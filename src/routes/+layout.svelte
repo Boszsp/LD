@@ -5,7 +5,14 @@
 
 	import { page } from '$app/stores';
 	import { Search, Button } from 'flowbite-svelte';
-	import { SearchOutline,HomeSolid,FileLinesSolid,ImageSolid,RocketSolid,CirclePlusSolid } from 'flowbite-svelte-icons';
+	import {
+		SearchOutline,
+		HomeSolid,
+		FileLinesSolid,
+		ImageSolid,
+		RocketSolid,
+		CirclePlusSolid
+	} from 'flowbite-svelte-icons';
 	import {
 		Sidebar,
 		SidebarBrand,
@@ -30,14 +37,13 @@
 			<SidebarGroup>
 				<SidebarBrand {site} />
 			</SidebarGroup>
-			<SidebarGroup  class="my-6">
-				
+			<SidebarGroup class="my-6">
 				<Button class="shadow">
-					<CirclePlusSolid class="w-5 h-5 me-2" />เพิ่ม
-				</Button >
+					<CirclePlusSolid class="me-2 h-5 w-5" />เพิ่ม
+				</Button>
 			</SidebarGroup>
 
-			<SidebarGroup >
+			<SidebarGroup>
 				<SidebarItem label="My Drive" href="/">
 					<svelte:fragment slot="icon">
 						<HomeSolid
@@ -45,24 +51,21 @@
 						/>
 					</svelte:fragment>
 				</SidebarItem>
-				<SidebarItem label="Document" href="/document" >
+				<SidebarItem label="Document" href="/document">
 					<svelte:fragment slot="icon">
 						<FileLinesSolid
 							class="h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
 						/>
 					</svelte:fragment>
 				</SidebarItem>
-				<SidebarItem label="Gallery" href="/gallery" >
+				<SidebarItem label="Gallery" href="/gallery">
 					<svelte:fragment slot="icon">
 						<ImageSolid
 							class="h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
 						/>
 					</svelte:fragment>
 				</SidebarItem>
-				<SidebarItem
-					label="Explore"
-					href="/explore"
-				>
+				<SidebarItem label="Explore" href="/explore">
 					<svelte:fragment slot="icon">
 						<RocketSolid
 							class="h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
@@ -82,15 +85,17 @@
 			</form>
 		</header>
 		<div class="h-full w-full overflow-hidden px-5">
-			<div class="h-full w-full  flex flex-col bg-white drop-shadow  p-5 rounded-xl">
+			<div class="flex h-full w-full flex-col rounded-xl bg-white p-5 drop-shadow">
 				<nav class="pb-5">
-					<p class="text-xl">{activeUrl.replace("/","")?.slice(0,1).toUpperCase() +activeUrl.replace("/","")?.slice(1) || "Home"}</p>
+					<p class="text-xl">
+						{activeUrl.replace('/', '')?.slice(0, 1).toUpperCase() +
+							activeUrl.replace('/', '')?.slice(1) || 'Home'}
+					</p>
 				</nav>
-				<main class="h-full w-full overflow-auto  pb-24">
+				<main class="h-full w-full overflow-auto pb-24">
 					<slot></slot>
 				</main>
 			</div>
-			
 		</div>
 	</div>
 </div>

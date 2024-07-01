@@ -12,16 +12,18 @@ export const nodes = [
 export const server_loads = [];
 
 export const dictionary = {
-		"/": [2],
-		"/document": [3],
-		"/explore": [~4],
-		"/gallery": [5]
-	};
+	'/': [2],
+	'/document': [3],
+	'/explore': [~4],
+	'/gallery': [5]
+};
 
 export const hooks = {
-	handleError: (({ error }) => { console.error(error) }),
+	handleError: ({ error }) => {
+		console.error(error);
+	},
 
-	reroute: (() => {})
+	reroute: () => {}
 };
 
 export { default as root } from '../root.svelte';
