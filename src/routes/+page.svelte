@@ -1,18 +1,28 @@
 <script>
 	import { Button } from 'flowbite-svelte';
+	import FolderCard from '$lib/components/card/FolderCard.svelte';
+	import GridFileCard from '$lib/components/card/GridFileCard.svelte';
 </script>
 
-<div>
-	<h1>Welcome to SvelteKit</h1>
-	<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div class="h-auto">
+	<div>
+	<p class="py-3">โฟรเดอร์</p>
+	<div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
 
-	<Button>Default</Button>
-	<Button color="alternative">Alternative</Button>
-	<Button color="dark">Dark</Button>
-	<Button color="light">Light</Button>
-	<Button color="blue">Blue</Button>
-	<Button color="green">Green</Button>
-	<Button color="red">Red</Button>
-	<Button color="yellow">Yellow</Button>
-	<Button color="purple">Purple</Button>
+	{#each Array(10)  as _,i}
+	<FolderCard title={'file'+i} color="red" />
+		
+	{/each}
+
+</div>
+<div >
+	<p class="py-3">ไฟล์</p>
+	<div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+	{#each Array(10)  as _,i}
+	<GridFileCard title={'file'+i} color="red" />
+	{/each}
+</div>
+</div>
+
+</div>
 </div>
