@@ -2,7 +2,6 @@
 	// Supports weights 100-900
 	import '@fontsource-variable/noto-sans-thai';
 	import '../app.css';
-
 	import { page } from '$app/stores';
 	import { Search, Button } from 'flowbite-svelte';
 	import {
@@ -20,6 +19,9 @@
 		SidebarItem,
 		SidebarWrapper
 	} from 'flowbite-svelte';
+	import { Modal } from 'flowbite-svelte';
+	import FileDropZone from '../lib/components/form/FileDropZone.svelte';
+	import FileCard from '../lib/components/card/FileCard.svelte';
 	let activeClass =
 		'flex items-center p-2 text-base font-normal  bg-primary-800 dark:bg-primary-200 rounded-lg dark:text-white hover:bg-primary-700';
 
@@ -29,6 +31,14 @@
 		href: '/',
 		img: '/favicon.png'
 	};
+	let isShowModal = false;
+	let files = [];
+
+	function onDeleteFileHandler(id,title){
+		files = files.filter(
+			(f,i)=>!(f.name == title && i == id)
+		)
+	}
 </script>
 
 <div class="flex h-full">
@@ -38,7 +48,7 @@
 				<SidebarBrand {site} />
 			</SidebarGroup>
 			<SidebarGroup class="my-6">
-				<Button class="shadow">
+				<Button on:click={() => (isShowModal = true)} class="shadow">
 					<CirclePlusSolid class="me-2 h-5 w-5" />เพิ่ม
 				</Button>
 			</SidebarGroup>
@@ -98,4 +108,21 @@
 			</div>
 		</div>
 	</div>
+	<Modal bind:open={isShowModal} outsideclose class="w-full p-2 pt-4">
+		<form enctype="multipart/form-data" action="/put" method="post" >
+		<FileDropZone bind:files />
+		<div class="flex flex-wrap">
+
+			{#each files as file,i}
+			<span class="w-1/2 p-2">
+				<FileCard id={i}  onDelete={onDeleteFileHandler} title={file.name} />
+			</span>
+			{/each}
+		</div>
+		<div class="w-full text-end mt-4">
+			<Button type="submit" >เพิ่มไฟล์</Button>
+			<Button on:click={() => (isShowModal = files)} color="alternative">ยกเลิก</Button>
+		</div>
+	</form>
+	</Modal>
 </div>

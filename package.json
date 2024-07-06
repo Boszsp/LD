@@ -28,6 +28,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@fontsource-variable/noto-sans-thai": "^5.0.14"
+		"@fontsource-variable/noto-sans-thai": "^5.0.14",
+		"formidable": "^3.5.1"
 	}
 }

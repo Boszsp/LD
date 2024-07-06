@@ -2,9 +2,10 @@
 	import { page } from '$app/stores';
 	/** @type {import('./$types').PageData} */
 	export let data;
+	data
 </script>
 
+ 
 <p>
-	{JSON.stringify($page)}
-	{JSON.stringify(data)}
+	{0} ผลลัพธ์
 </p>
